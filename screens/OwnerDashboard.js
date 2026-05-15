@@ -73,13 +73,6 @@ const filteredOrders = orders.filter(o => {
     All: orders.length,
   };
 
-  const counts = {
-    Pending: orders.filter(o => o.status === 'Pending').length,
-    Preparing: orders.filter(o => o.status === 'Preparing').length,
-    Done: orders.filter(o => o.status === 'Done').length,
-    All: orders.length,
-  };
-
   // PIN Screen
   if (!unlocked) {
     return (

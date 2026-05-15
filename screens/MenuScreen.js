@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import {
-  View, Text, StyleSheet, FlatList,
-  TouchableOpacity, Image, ActivityIndicator
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  ActivityIndicator,
 } from 'react-native';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -86,8 +91,20 @@ export default function MenuScreen({ navigation }) {
           renderItem={({ item }) => (
             <View style={styles.card}>
               <View style={styles.cardImage}>
-                <Text style={styles.cardEmoji}>☕</Text>
-              </View>
+  {item.imageUrl ? (
+    <Image
+      source={{ uri: item.imageUrl }}
+      style={styles.cardPhoto}
+      resizeMode="cover"
+    />
+  ) : (
+    <Text style={styles.cardEmoji}>
+      {item.category === 'Coffee' ? '☕' :
+       item.category === 'Non-Coffee' ? '🧋' :
+       item.category === 'Food' ? '🍽️' : '🥐'}
+    </Text>
+  )}
+</View>
               <View style={styles.cardBody}>
                 <Text style={styles.cardName}>{item.name}</Text>
                 <Text style={styles.cardDesc} numberOfLines={2}>{item.description}</Text>
@@ -260,4 +277,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  cardPhoto: {
+  width: '100%',
+  height: '100%',
+},
 });
