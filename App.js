@@ -4,10 +4,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 
 import MenuScreen from './screens/MenuScreen';
-import CartScreen from './screens/CartScreen';
 import LoyaltyScreen from './screens/LoyaltyScreen';
 import OwnerDashboard from './screens/OwnerDashboard';
 import MenuManager from './screens/MenuManager';
+import CartScreen from './screens/CartScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
